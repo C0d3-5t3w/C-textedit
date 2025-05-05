@@ -11,7 +11,7 @@ TARGET = $(BIN_DIR)/ctextedit
 SRC = $(SRC_DIR)/main.c
 OBJ = $(OBJ_DIR)/main.o
 
-.PHONY: all clean build run
+.PHONY: all clean build run help
 
 build: $(TARGET)
 
@@ -29,3 +29,11 @@ clean:
 
 run:
 	./$(TARGET)
+
+help:
+	@echo "Usage: make [target]"
+	@echo "Targets:"
+	@echo "  all      - Build the project (default target)"
+	@echo "  clean    - Remove build artifacts"
+	@echo "  run      - Run the built executable"
+	@echo "  help     - Show this help message"
