@@ -1,0 +1,26 @@
+cmake_minimum_required(VERSION 3.10)
+project(CTextEdit VERSION 0.1.0 LANGUAGES C)
+
+# Set the C standard
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
+# Include directories
+include_directories(${PROJECT_SOURCE_DIR}/inc)
+
+# Create directory structure if it doesn't exist
+file(MAKE_DIRECTORY ${PROJECT_SOURCE_DIR}/inc)
+file(MAKE_DIRECTORY ${PROJECT_SOURCE_DIR}/src)
+
+# Copy header file to inc directory if it's in src
+if(EXISTS "${PROJECT_SOURCE_DIR}/src/main.h")
+    configure_file(${PROJECT_SOURCE_DIR}/src/main.h ${PROJECT_SOURCE_DIR}/inc/main.h COPYONLY)
+endif()
+
+# Add executable
+add_executable(ctextedit 
+    src/main.c
+)
+
+# Install rules
+install(TARGETS ctextedit DESTINATION bin)
